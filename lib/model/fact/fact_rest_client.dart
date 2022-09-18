@@ -1,4 +1,6 @@
+import 'package:cat_trivia/utils/get_random_date.dart';
 import 'package:dio/dio.dart';
+import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:retrofit/retrofit.dart';
 
@@ -13,10 +15,17 @@ abstract class FactRestClient {
 }
 
 @JsonSerializable()
+@HiveType(typeId: 0)
 class Fact {
+  @HiveField(0)
   String fact;
 
-  Fact({required this.fact});
+  @HiveField(1)
+  DateTime? createdAt;
+
+  Fact({required this.fact, this.createdAt}) {
+    createdAt = getRandomDate();
+  }
 
   factory Fact.fromJson(Map<String, dynamic> json) => _$FactFromJson(json);
 
