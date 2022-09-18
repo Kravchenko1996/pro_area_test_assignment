@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.cat_trivia.cat_trivia">
    <application
-        android:label="cat_trivia"
+        android:label="Cat Trivia"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
